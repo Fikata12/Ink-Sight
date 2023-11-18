@@ -1,8 +1,6 @@
 .logo {
-    max-height: 1.5em;
+    max-height: 1.3em;
     width: 100%;
-}
-
-.color-orange {
-    background-color: #f0e0ca;
+    display: flex;
+    align-self: center;
 }
