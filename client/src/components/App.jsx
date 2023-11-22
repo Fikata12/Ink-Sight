@@ -1,13 +1,13 @@
 import { Route, Routes } from 'react-router-dom';
-import Header from "./components/header/Header";
-import Footer from "./components/footer/Footer";
-import NotFound from './components/not-found/NotFound';
-import About from './components/about/About';
+
+import NotFound from './not-found/NotFound';
+import About from './about/About';
+
+import "/index.css";
 
 function App() {
   return (
-    <>
-      <Header />
+    <div className='app'>
       <Routes>
         <Route path='/' />
         <Route path='/reviews' />
@@ -18,8 +18,7 @@ function App() {
         <Route path='/register' />
         <Route path='*' element={<NotFound />} />
       </Routes>
-      <Footer />
-    </>
+    </div>
   )
 }
 
