@@ -1,7 +1,8 @@
-import {Route, Routes} from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
 import NotFound from './components/not-found/NotFound';
+import About from './components/about/About';
 
 function App() {
   return (
@@ -11,11 +12,11 @@ function App() {
         <Route path='/' />
         <Route path='/reviews' />
         <Route path='/add' />
-        <Route path='/about' />
+        <Route path='/about' element={<About />} />
         <Route path='/edit/:id' />
         <Route path='/login' />
         <Route path='/register' />
-        <Route path='*' element={ <NotFound />} />
+        <Route path='*' element={<NotFound />} />
       </Routes>
       <Footer />
     </>
