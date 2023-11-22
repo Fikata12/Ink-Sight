@@ -1,17 +1,14 @@
+* {
+    box-sizing: border-box;
+}
+
 html {
     font-size: 16px;
 }
 
-body {
-    height: 100vh;
+.color-light-orange {
+    background-color: #fff8f1;
 }
-
-#root {
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-}
-
 
 .color-orange {
     background-color: #f0e0ca;
@@ -19,4 +16,9 @@ body {
 
 .text-orange {
     color: #e6bc78;
+}
+
+#root {
+    position: relative;
+    min-height: 100vh;
 }
