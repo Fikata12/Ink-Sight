@@ -1,7 +1,12 @@
 .footer {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    white-space: nowrap;
-    line-height: 3.5em;
-  }
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  white-space: nowrap;
+  line-height: 3.5em;
+}
+
+.footer-text {
+  word-break: break-all;
+  white-space: normal;
+}

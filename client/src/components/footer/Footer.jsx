@@ -5,7 +5,7 @@ export default function Footer() {
     return (
         <footer class="border-top footer text-muted color-orange">
             <div class="container">
-                &copy; 2023 - InkSight
+                <span class="footer-text">&copy; 2023 - InkSight</span>
             </div>
         </footer>
     )
