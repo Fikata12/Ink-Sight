@@ -32,7 +32,7 @@ export default function Register() {
                 <input type="password" id="Password" className="form-control" />
             </div>
 
-            <button type="button" className="btn color-dark-orange mb-2 d-block mx-auto w-50">Sign in</button>
+            <button type="button" className="btn color-dark-orange mb-2 d-block mx-auto w-50">Register</button>
 
             <div className="text-center">
                 <p>Already a member? <Link to={"/login"} className="text-orange text-dark-orange">Login</Link></p>

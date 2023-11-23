@@ -23,7 +23,7 @@ export default function Login() {
                 <input type="password" id="Password" className="form-control" />
             </div>
 
-            <button type="button" className="btn color-dark-orange mb-2 d-block mx-auto w-50">Sign in</button>
+            <button type="button" className="btn color-dark-orange mb-2 d-block mx-auto w-50">Login</button>
 
             <div className="text-center">
                 <p>Not a member? <Link to={"/register"} className="text-orange text-dark-orange">Register</Link></p>
