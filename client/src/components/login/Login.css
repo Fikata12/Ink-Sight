@@ -1,0 +1,9 @@
+.image-container img {
+    max-width: 50%;
+    height: auto;
+}
+.login-form {
+    max-width: 25em;
+    margin-top: 5em;
+    margin-bottom: 5em;
+}
