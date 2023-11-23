@@ -21,6 +21,7 @@ a {
 .app {
     margin-bottom: 5em;
     margin-top: 2em;
+    margin-inline: 1em;
 }
 
 .color-light-orange {
@@ -33,6 +34,10 @@ a {
 
 .color-orange {
     background-color: #f0e0ca;
+}
+
+.btn.color-orange:hover {
+    background-color: #e6c9ac;
 }
 
 .text-orange {
