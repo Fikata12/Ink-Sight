@@ -1,0 +1,8 @@
+.image-container img {
+    max-width: 30%;
+    height: auto;
+}
+.register-form {
+    max-width: 25em;
+    margin-inline: 1em;
+}
