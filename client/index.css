@@ -14,8 +14,21 @@ body {
     margin-bottom: 3.5em;
 }
 
+a {
+    text-decoration: none;
+}
+
+.app {
+    margin-bottom: 5em;
+    margin-top: 2em;
+}
+
 .color-light-orange {
     background-color: #fff8f1;
+}
+
+.color-dark-orange {
+    background-color: #e6c9ac;
 }
 
 .color-orange {
@@ -24,4 +37,8 @@ body {
 
 .text-orange {
     color: #e6bc78;
+}
+
+.text-dark-orange {
+    color: #cea563;
 }
