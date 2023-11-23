@@ -4,6 +4,5 @@
 }
 .login-form {
     max-width: 25em;
-    margin-top: 5em;
-    margin-bottom: 5em;
+    margin-inline: 1em;
 }
