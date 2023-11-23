@@ -33,7 +33,7 @@ export default function About() {
                                 We believe in the power of storytelling to inspire, educate, and connect individuals from all walks of life.
                             </p>
                             <p>
-                                Book Review App aims to be a hub for meaningful discussions, thoughtful reviews, and a source of inspiration for your next literary adventure.
+                                Ink Sight aims to be a hub for meaningful discussions, thoughtful reviews, and a source of inspiration for your next literary adventure.
                             </p>
                         </div>
                     </div>
