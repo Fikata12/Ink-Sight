@@ -1,38 +1,83 @@
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+
+import AuthContext from "../../contexts/AuthContext";
+
+import useForm from "../../hooks/useForm";
 
 import "./Register.css"
 import "/index.css"
 
+const RegisterFormKeys = {
+    username: 'username',
+    email: 'email',
+    password: 'password',
+    repeatPassword: 'repeatPassword',
+}
+
 export default function Register() {
+
+    const { registerSubmitHandler } = useContext(AuthContext);
+
+    const { values, onChange, onSubmit } = useForm(registerSubmitHandler, {
+        [RegisterFormKeys.email]: '',
+        [RegisterFormKeys.username]: '',
+        [RegisterFormKeys.password]: ''
+    });
+
     return (
-        <form className="register-form mx-auto color-light-orange p-4 rounded border">
+        <form onSubmit={onSubmit} className="register-form mx-auto color-light-orange p-4 rounded border">
 
             <div className="container image-container my-2">
                 <img src="./public/small-logo.png" alt="Logo" />
             </div>
+
             <h1 className="text-center mb-2">Register</h1>
 
             <div className="form-outline mb-2">
-                <label className="form-label" htmlFor="FirstName">First Name</label>
-                <input id="FirstName" className="form-control" />
+                <label className="form-label" htmlFor="username">Username</label>
+                <input 
+                onChange={onChange}
+                name={RegisterFormKeys.username}
+                value={values[RegisterFormKeys.username]}
+                id="username" 
+                className="form-control" />
             </div>
 
             <div className="form-outline mb-2">
-                <label className="form-label" htmlFor="LastName">Last Name</label>
-                <input id="LastName" className="form-control" />
-            </div>
-
-            <div className="form-outline mb-2">
-                <label className="form-label" htmlFor="EmailAddress">Email Address</label>
-                <input type="email" id="EmailAddress" className="form-control" />
+                <label className="form-label" htmlFor="emailAddress">Email Address</label>
+                <input 
+                onChange={onChange}
+                name={RegisterFormKeys.email}
+                value={values[RegisterFormKeys.email]}
+                type="email" 
+                id="emailAddress" 
+                className="form-control" />
             </div>
 
             <div className="form-outline mb-3">
-                <label className="form-label" htmlFor="Password">Password</label>
-                <input type="password" id="Password" className="form-control" />
+                <label className="form-label" htmlFor="password">Password</label>
+                <input 
+                onChange={onChange}
+                name={RegisterFormKeys.password}
+                value={values[RegisterFormKeys.password]}
+                type="password" 
+                id="password" 
+                className="form-control" />
             </div>
 
-            <button type="button" className="btn color-dark-orange mb-2 d-block mx-auto w-50">Register</button>
+            <div className="form-outline mb-3">
+                <label className="form-label" htmlFor="repeatPassword">Password</label>
+                <input 
+                onChange={onChange}
+                name={RegisterFormKeys.repeatPassword}
+                value={values[RegisterFormKeys.repeatPassword]}
+                type="password" 
+                id="repeatPassword" 
+                className="form-control" />
+            </div>
+
+            <button type="submit" className="btn color-orange mb-2 d-block mx-auto w-50">Register</button>
 
             <div className="text-center">
                 <p>Already a member? <Link to={"/login"} className="text-orange text-dark-orange">Login</Link></p>
