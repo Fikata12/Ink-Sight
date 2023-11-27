@@ -5,7 +5,6 @@ import { useContext } from "react";
 import AuthContext from "../../contexts/AuthContext";
 
 import "./Login.css"
-import "/index.css"
 
 const LoginFormKeys = {
     email: 'email',
@@ -30,10 +29,10 @@ export default function Login() {
             <h1 className="text-center mb-2">Login</h1>
 
             <div className="form-outline mb-2">
-                <label className="form-label" htmlFor="emailAddress">Email Address</label>
+                <label className="form-label" htmlFor="email">Email Address</label>
                 <input
                     type="email"
-                    id="email-address"
+                    id="email"
                     className="form-control"
                     onChange={onChange}
                     name={LoginFormKeys.email}

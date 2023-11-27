@@ -6,7 +6,6 @@ import AuthContext from "../../contexts/AuthContext";
 import useForm from "../../hooks/useForm";
 
 import "./Register.css"
-import "/index.css"
 
 const RegisterFormKeys = {
     username: 'username',
