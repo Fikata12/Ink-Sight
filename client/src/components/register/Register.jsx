@@ -67,7 +67,7 @@ export default function Register() {
             </div>
 
             <div className="form-outline mb-3">
-                <label className="form-label" htmlFor="confirmPassword">Password</label>
+                <label className="form-label" htmlFor="confirmPassword">Confirm Password</label>
                 <input 
                 onChange={onChange}
                 name={RegisterFormKeys.confirmPassword}
