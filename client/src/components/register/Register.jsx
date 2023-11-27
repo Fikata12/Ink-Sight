@@ -12,7 +12,7 @@ const RegisterFormKeys = {
     username: 'username',
     email: 'email',
     password: 'password',
-    repeatPassword: 'repeatPassword',
+    confirmPassword: 'confirmPassword',
 }
 
 export default function Register() {
@@ -67,13 +67,13 @@ export default function Register() {
             </div>
 
             <div className="form-outline mb-3">
-                <label className="form-label" htmlFor="repeatPassword">Password</label>
+                <label className="form-label" htmlFor="confirmPassword">Password</label>
                 <input 
                 onChange={onChange}
-                name={RegisterFormKeys.repeatPassword}
-                value={values[RegisterFormKeys.repeatPassword]}
+                name={RegisterFormKeys.confirmPassword}
+                value={values[RegisterFormKeys.confirmPassword]}
                 type="password" 
-                id="repeatPassword" 
+                id="confirmPassword" 
                 className="form-control" />
             </div>
 
