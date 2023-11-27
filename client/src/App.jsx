@@ -7,6 +7,7 @@ import Header from './components/header/Header';
 import Footer from './components/footer/Footer';
 import Login from './components/login/Login';
 import Register from './components/register/Register';
+import Add from './components/add/Add';
 
 import AuthContext from './contexts/AuthContext';
 
@@ -71,7 +72,7 @@ function App() {
         <Routes>
           <Route path={Paths.Home} />
           <Route path={Paths.Reviews} />
-          <Route path={Paths.Add} />
+          <Route path={Paths.Add} element={<Add />} />
           <Route path={Paths.Edit} />
           <Route path={Paths.About} element={<About />} />
           <Route path={Paths.Login} element={<Login />} />
