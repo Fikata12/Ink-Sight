@@ -26,7 +26,7 @@ export default function Edit() {
                         <span class="text-danger"></span>
                     </div>
                     <div class="mb-3">
-                        <input class="btn color-orange mb-2 w-100 p-3 fw-bold" type="submit" value="Add" />
+                        <input class="btn color-orange mb-2 w-100 p-3 fw-bold" type="submit" value="Edit" />
                     </div>
                 </form>
             </div>
