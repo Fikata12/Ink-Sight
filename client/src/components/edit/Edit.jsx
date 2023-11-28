@@ -1,7 +1,7 @@
-export default function Add() {
+export default function Edit() {
     return (
         <div class="row container mx-auto">
-            <h2 class="text-center">Add Review</h2>
+            <h2 class="text-center">Edit Review</h2>
             <hr />
             <div class="col-sm-12 offset-lg-2 col-lg-8 offset-xl-3 col-xl-6">
                 <form method="post">
