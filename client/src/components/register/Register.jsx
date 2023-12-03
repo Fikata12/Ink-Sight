@@ -5,6 +5,8 @@ import AuthContext from "../../contexts/authContext";
 
 import useForm from "../../hooks/useForm";
 
+import Paths from "../../utils/paths";
+
 import "./Register.css"
 
 const RegisterFormKeys = {
@@ -79,7 +81,7 @@ export default function Register() {
             <button type="submit" className="btn color-orange mb-2 d-block mx-auto w-50">Register</button>
 
             <div className="text-center">
-                <p>Already a member? <Link to={"/login"} className="text-orange text-dark-orange">Login</Link></p>
+                <p>Already a member? <Link to={Paths.Login} className="text-orange text-dark-orange">Login</Link></p>
             </div>
         </form>
     )

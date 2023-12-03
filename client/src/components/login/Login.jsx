@@ -4,6 +4,8 @@ import { useContext } from "react";
 
 import AuthContext from "../../contexts/authContext";
 
+import Paths from "../../utils/paths";
+
 import "./Login.css"
 
 const LoginFormKeys = {
@@ -53,7 +55,7 @@ export default function Login() {
             <button type="submit" className="btn color-orange mb-2 d-block mx-auto w-50">Login</button>
 
             <div className="text-center">
-                <p>Not a member? <Link to={"/register"} className="text-orange text-dark-orange">Register</Link></p>
+                <p>Not a member? <Link to={Paths.Register} className="text-orange text-dark-orange">Register</Link></p>
             </div>
         </form>
     )

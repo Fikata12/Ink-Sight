@@ -8,6 +8,7 @@ import Login from './components/login/Login';
 import Register from './components/register/Register';
 import Add from './components/add/Add';
 import Logout from './components/logout/Logout';
+import Reviews from './components/reviews/Reviews';
 
 import { AuthProvider } from './contexts/authContext';
 
@@ -23,9 +24,9 @@ function App() {
       <div className='app'>
         <Routes>
           <Route path={Paths.Home} />
-          <Route path={Paths.Reviews} />
+          <Route path={Paths.Reviews} element={<Reviews />} />
           <Route path={Paths.Add} element={<Add />} />
-          <Route path={Paths.Edit} />
+          <Route path={`${Paths.Edit}/:id`} />
           <Route path={Paths.About} element={<About />} />
           <Route path={Paths.Login} element={<Login />} />
           <Route path={Paths.Logout} element={<Logout />} />

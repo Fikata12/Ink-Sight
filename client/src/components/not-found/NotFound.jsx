@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 
+import Paths from "../../utils/paths";
+
 import "./NotFound.css";
 
 export default function NotFound() {
@@ -10,7 +12,7 @@ export default function NotFound() {
             <p className="lead">
                 The page you're looking for doesn't exist.
             </p>
-            <Link className="btn color-orange" to="/">Go Home</Link>
+            <Link className="btn color-orange" to={Paths.Home}>Go Home</Link>
         </div>
     )
 }

@@ -1339,64 +1339,45 @@
     	}
     };
     var seedData = {
-    	recipes: {
-    		"3987279d-0ad4-4afb-8ca9-5b256ae3b298": {
-    			_ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
-    			name: "Easy Lasagna",
-    			img: "assets/lasagna.jpg",
-    			ingredients: [
-    				"1 tbsp Ingredient 1",
-    				"2 cups Ingredient 2",
-    				"500 g  Ingredient 3",
-    				"25 g Ingredient 4"
-    			],
-    			steps: [
-    				"Prepare ingredients",
-    				"Mix ingredients",
-    				"Cook until done"
-    			],
-    			_createdOn: 1613551279012
-    		},
+    	books: {
     		"8f414b4f-ab39-4d36-bedb-2ad69da9c830": {
     			_ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
-    			name: "Grilled Duck Fillet",
-    			img: "assets/roast.jpg",
-    			ingredients: [
-    				"500 g  Ingredient 1",
-    				"3 tbsp Ingredient 2",
-    				"2 cups Ingredient 3"
-    			],
-    			steps: [
-    				"Prepare ingredients",
-    				"Mix ingredients",
-    				"Cook until done"
-    			],
+                title: "Terminal Peace",
+                imgURL: "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1637441700i/59616363.jpg",
+                isbn: "9780756412807",
+                review: "Terminal Peace is a delightful science fiction romp that effortlessly combines humor, heart, and intergalactic intrigue. With a cast of quirky characters and a plot that keeps you on the edge of your seat, this book is a joyful exploration of peacekeeping in a universe filled with unexpected challenges. For fans of lighthearted yet thought-provoking sci-fi, Terminal Peace is a stellar addition to the genre.",
     			_createdOn: 1613551344360
     		},
     		"985d9eab-ad2e-4622-a5c8-116261fb1fd2": {
     			_ownerId: "847ec027-f659-4086-8032-5173e2f9c93a",
-    			name: "Roast Trout",
-    			img: "assets/fish.jpg",
-    			ingredients: [
-    				"4 cups Ingredient 1",
-    				"1 tbsp Ingredient 2",
-    				"1 tbsp Ingredient 3",
-    				"750 g  Ingredient 4",
-    				"25 g Ingredient 5"
-    			],
-    			steps: [
-    				"Prepare ingredients",
-    				"Mix ingredients",
-    				"Cook until done"
-    			],
+                title: "The Wager",
+                imgURL: "https://cdn.sanity.io/images/3siusw36/production/636c895c3ffe8978c7414bcdd92290a8df97073d-600x912.jpg?auto=format&w=400&fit=scale",
+                isbn: "9780385534260",
+                review: "The Wager is a riveting tale of high stakes and moral dilemmas that kept me glued to the pages. With skillful storytelling, the author weaves a narrative that explores the complexities of human nature and the consequences of choices. This thought-provoking journey offers a perfect blend of suspense, drama, and philosophical reflection, making it a compelling read for anyone seeking a gripping and introspective story.",
     			_createdOn: 1613551388703
-    		}
+    		},
+            "3987279d-0ad4-4afb-8ca9-5b256ae3b298": {
+                _ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
+                title: "Fable: Blood of Heroes",
+                imgURL: "https://m.media-amazon.com/images/I/51h-aYcokEL.jpg",
+                isbn: "9780345542342",
+                review: "Fable: Blood of Heroes is a captivating journey into the rich and enchanting world of Albion. The pages are woven with a compelling narrative that seamlessly blends action, morality, and fantastical elements. As a fan of the Fable series, this latest installment not only lives up to the legacy but adds a fresh layer of intrigue, making it a must-read for both newcomers and long-time enthusiasts.",
+                _createdOn: 1613551279012
+            },
+            "8027fda6-ebcd-40c0-a766-365593337003": {
+                _ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
+                title: "The Game Master: Mansion Mystery",
+                imgURL: "https://m.media-amazon.com/images/I/91gRyZ+NarL._AC_UF1000,1000_QL80_.jpg",
+                isbn: "9780063025134",
+                review: "The Game Master: Mansion Mystery is an exhilarating dive into the world of immersive gaming and suspense. The author's intricate plot and well-developed characters create a captivating atmosphere as players navigate through the twists and turns of the Mansion Mystery. With each page, the stakes heighten, leaving readers on the edge of their seats, making this a must-read for both gaming enthusiasts and mystery lovers alike.",
+                _createdOn: 1614935055353
+            },
     	},
     	comments: {
     		"0a272c58-b7ea-4e09-a000-7ec988248f66": {
     			_ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
-    			content: "Great recipe!",
-    			recipeId: "8f414b4f-ab39-4d36-bedb-2ad69da9c830",
+    			content: "Great review!",
+    			bookId: "8f414b4f-ab39-4d36-bedb-2ad69da9c830",
     			_createdOn: 1614260681375,
     			_id: "0a272c58-b7ea-4e09-a000-7ec988248f66"
     		}

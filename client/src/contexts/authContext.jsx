@@ -24,8 +24,7 @@ export const AuthProvider = ({ children }) => {
       const result = await authService.register(values.email, values.password, values.username);
   
       setAuth(result);
-  
-      console.log(result);
+      
       navigate(Paths.Home);
     };
   
@@ -44,7 +43,8 @@ export const AuthProvider = ({ children }) => {
       registerSubmitHandler,
       loginSubmitHandler,
       username: auth.username,
-      isAuthenticated: !!auth.email
+      isAuthenticated: !!auth.email,
+      userId: auth._id,
     };
   
     return (
