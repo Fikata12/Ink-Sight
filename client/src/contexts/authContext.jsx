@@ -1,24 +1,21 @@
-import { createContext, useState } from "react";
+import { createContext } from "react";
 import { useNavigate } from "react-router-dom";
 import Paths from "../utils/paths";
 import * as authService from '../services/authService';
+import usePersistedState from "../hooks/usePersistedState";
 
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
     const navigate = useNavigate();
-    const [auth, setAuth] = useState(() => {
-      localStorage.removeItem('accessToken');
-      return {};
-    });
+    const [auth, setAuth] = usePersistedState('auth', {});
   
     const loginSubmitHandler = async (values) => {
       //TODO: Error handling
       const result = await authService.login(values.email, values.password);
   
       setAuth(result);
-      localStorage.setItem('accessToken', result.accessToken);
-  
+
       navigate(Paths.Home);
     };
   
@@ -27,7 +24,6 @@ export const AuthProvider = ({ children }) => {
       const result = await authService.register(values.email, values.password, values.username);
   
       setAuth(result);
-      localStorage.setItem('accessToken', result.accessToken);
   
       console.log(result);
       navigate(Paths.Home);
@@ -39,8 +35,7 @@ export const AuthProvider = ({ children }) => {
       await authService.logout();
   
       setAuth({});
-      localStorage.removeItem('accessToken');
-  
+      
       navigate(Paths.Home);
     };
   
