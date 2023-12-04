@@ -15,6 +15,7 @@ import { AuthProvider } from './contexts/authContext';
 import Paths from './utils/paths';
 
 import "/index.css";
+import Edit from './components/edit/Edit';
 
 function App() {
 
@@ -26,7 +27,7 @@ function App() {
           <Route path={Paths.Home} />
           <Route path={Paths.Reviews} element={<Reviews />} />
           <Route path={Paths.Add} element={<Add />} />
-          <Route path={`${Paths.Edit}/:id`} />
+          <Route path={`${Paths.Edit}/:id`} element={<Edit />} />
           <Route path={Paths.About} element={<About />} />
           <Route path={Paths.Login} element={<Login />} />
           <Route path={Paths.Logout} element={<Logout />} />

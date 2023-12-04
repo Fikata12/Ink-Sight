@@ -25,7 +25,7 @@ export default function Login() {
         <form onSubmit={onSubmit} className="login-form mx-auto color-light-orange p-4 rounded border">
 
             <div className="container image-container my-2">
-                <img src="./public/small-logo.png" alt="Logo" />
+                <img src="/small-logo.png" alt="Logo" />
             </div>
 
             <h1 className="text-center mb-2">Login</h1>

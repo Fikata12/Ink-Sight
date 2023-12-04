@@ -15,7 +15,7 @@ export default function Header() {
       <nav className="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow mb-3 color-orange">
         <div className="container-fluid">
           <Link className="navbar-brand" to={Paths.Home}>
-            <img src="../../public/big-logo.png" className="logo" alt="Logo" />
+            <img src="/big-logo.png" className="logo" alt="Logo" />
           </Link>
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
             aria-expanded="false" aria-label="Toggle navigation">
