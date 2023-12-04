@@ -3,7 +3,7 @@ import "./About.css";
 export default function About() {
     return (
         <div>
-            <div className="container image-container my-4">
+            <div className="container big-image-container my-4">
                 <img src="/big-logo.png" alt="Logo" />
             </div>
             <section className="mt-5 py-4 color-light-orange">

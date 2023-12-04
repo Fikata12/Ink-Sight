@@ -1,8 +1,23 @@
-import { Link } from "react-router-dom";
-import "./ReviewCard.css"
+import { Link, useNavigate } from "react-router-dom";
+
+import * as bookService from '../../../services/bookService';
+
 import Paths from "../../../utils/paths";
 
+import "./ReviewCard.css"
+
 export default function ReviewCard(values) {
+    const navigate = useNavigate();
+    
+    const deleteButtonClickHandler = async () => {
+        const hasConfirmed = confirm(`Are you sure you want to delete your review review about "${values.title}"?`);
+
+        if (hasConfirmed) {
+            await bookService.remove(values._id);
+
+            navigate('/books/reviews');
+        }
+    }
     return (
         <section className="book-card">
             <header className="book-card-header color-orange">
@@ -16,7 +31,7 @@ export default function ReviewCard(values) {
                         {values._ownerId === values.userId &&
                             <>
                                 <Link to={`${Paths.Edit}/${values._id}`} className="btn color-orange mb-2 p-2 fw-bold">Edit</Link>
-                                <Link to={`${Paths.Delete}/${values._id}`} className="btn color-orange mb-2 p-2 fw-bold">Delete</Link>
+                                <button className="btn color-orange mb-2 p-2 fw-bold" onClick={deleteButtonClickHandler}>Delete</button>
                             </>
                         }
                     </div>
