@@ -13,7 +13,11 @@ export const getAll = async () => {
 };
 
 export const getOne = async (reviewId) => {
-    const result = await request.get(`${baseUrl}/${reviewId}`, );
+    const query = new URLSearchParams({
+        load: `owner=_ownerId:users`,
+    });
+
+    const result = await request.get(`${baseUrl}/${reviewId}?${query}`, );
 
     return result;
 }

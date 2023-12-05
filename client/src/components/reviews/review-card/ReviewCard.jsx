@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 
-import * as bookService from '../../../services/bookService';
+import * as bookService from '../../../services/reviewService';
 
 import Paths from "../../../utils/paths";
 

@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 
 import useForm from '../../hooks/useForm';
 
-import * as bookService from '../../services/bookService';
+import * as bookService from '../../services/reviewService';
 
 const EditFormKeys = {
     title: 'title',

@@ -4,7 +4,7 @@ import ReviewCard from './review-card/ReviewCard';
 
 import AuthContext from "../../contexts/authContext";
 
-import * as bookService from '../../services/bookService';
+import * as bookService from '../../services/reviewService';
 
 import "./Reviews.css"
 

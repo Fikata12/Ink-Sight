@@ -3,7 +3,7 @@ const Paths = {
     About: '/about',
     Reviews: '/reviews',
     Add: '/reviews/add',
-    Details: '/reviews',
+    Details: '/reviews/details',
     Edit: '/reviews/edit',
     Delete: '/reviews/delete',
     Login: '/login',

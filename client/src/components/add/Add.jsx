@@ -5,7 +5,7 @@ import AuthContext from '../../contexts/authContext';
 
 import useForm from '../../hooks/useForm';
 
-import * as bookService from '../../services/bookService';
+import * as bookService from '../../services/reviewService';
 import Paths from '../../utils/paths';
 
 const AddFormKeys = {

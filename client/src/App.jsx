@@ -11,6 +11,7 @@ import Logout from './components/logout/Logout';
 import Reviews from './components/reviews/Reviews';
 import Edit from './components/edit/Edit';
 import MyReviews from './components/my-reviews/MyReviews';
+import Details from './components/details/Details';
 
 import { AuthProvider } from './contexts/authContext';
 
@@ -30,6 +31,7 @@ function App() {
           <Route path={Paths.Mine} element={<MyReviews />} />
           <Route path={Paths.Add} element={<Add />} />
           <Route path={`${Paths.Edit}/:id`} element={<Edit />} />
+          <Route path={`${Paths.Details}/:id`} element={<Details />} />
           <Route path={Paths.About} element={<About />} />
           <Route path={Paths.Login} element={<Login />} />
           <Route path={Paths.Logout} element={<Logout />} />
