@@ -1,8 +1,12 @@
 import { useNavigate } from 'react-router-dom';
+import { useContext, useEffect } from 'react';
+
+import AuthContext from '../../contexts/authContext';
 
 import useForm from '../../hooks/useForm';
 
 import * as bookService from '../../services/bookService';
+import Paths from '../../utils/paths';
 
 const AddFormKeys = {
     title: 'title',
@@ -12,10 +16,19 @@ const AddFormKeys = {
 }
 
 export default function Add() {
+    const {isAuthenticated} = useContext(AuthContext);
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (!isAuthenticated) {
+            navigate(Paths.Login);
+        }
+    }, []);
+
     const createReviewSubmitHandler = async (values) => {
         try {
             await bookService.create(values);
-            navigate('/books/reviews');
+            navigate(Paths.Reviews);
         } catch (err) {
             // Error notification
             console.log(err);
@@ -29,7 +42,6 @@ export default function Add() {
         [AddFormKeys.imgURL]: '',
     });
 
-    const navigate = useNavigate();
 
     return (
         <div className="row container mx-auto">
