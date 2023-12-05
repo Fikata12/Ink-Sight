@@ -1,8 +1,13 @@
-.image-container img {
-    max-width: 30%;
+.register-image-container img {
+    max-width: 50%;
     height: auto;
 }
+
 .register-form {
     max-width: 25em;
-    margin-inline: 1em;
+}
+
+.register-image-container {
+    display: flex;
+    justify-content: center;
 }

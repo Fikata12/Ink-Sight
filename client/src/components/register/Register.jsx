@@ -29,7 +29,7 @@ export default function Register() {
     return (
         <form onSubmit={onSubmit} className="register-form mx-auto color-light-orange p-4 rounded border">
 
-            <div className="container image-container my-2">
+            <div className="container register-image-container my-2">
                 <img src="/small-logo.png" alt="Logo" />
             </div>
 
