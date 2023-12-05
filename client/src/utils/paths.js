@@ -10,6 +10,7 @@ const Paths = {
     Register: '/register',
     Logout: '/logout',
     NotFound: '*',
+    Mine: '/books/reviews/mine'
 };
 
 export default Paths;

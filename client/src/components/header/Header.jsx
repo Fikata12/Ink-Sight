@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import AuthContext from '../../contexts/authContext';
 
 import Paths from '../../utils/paths';
- 
+
 import "./Header.css";
 
 export default function Header() {
@@ -23,12 +23,19 @@ export default function Header() {
           </button>
           <div className="navbar-collapse collapse d-sm-inline-flex justify-content-between">
             <ul className="navbar-nav flex-grow-1">
+              {isAuthenticated &&
+                <li className="nav-item">
+                  <Link className="nav-link text-dark" to={Paths.Mine}>My Reviews</Link>
+                </li>
+              }
               <li className="nav-item">
                 <Link className="nav-link text-dark" to={Paths.Reviews}>Reviews</Link>
               </li>
-              <li className="nav-item">
-                <Link className="nav-link text-dark" to={Paths.Add}>Add</Link>
-              </li>
+              {isAuthenticated &&
+                <li className="nav-item">
+                  <Link className="nav-link text-dark" to={Paths.Add}>Add</Link>
+                </li>
+              }
               <li className="nav-item">
                 <Link className="nav-link text-dark" to={Paths.About}>About</Link>
               </li>

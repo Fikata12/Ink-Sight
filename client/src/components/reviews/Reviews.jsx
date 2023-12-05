@@ -8,7 +8,7 @@ import * as bookService from '../../services/bookService';
 
 import "./Reviews.css"
 
-export default function Reviews() {
+export default function Reviews(values) {
     const [books, setBooks] = useState([]);
     const { userId } = useContext(AuthContext);
 
@@ -31,8 +31,10 @@ export default function Reviews() {
                 </div>
             </div>
             <div className="reviews">
-                {books.map(book => (
-                    <ReviewCard key={book._id} {...book} userId={userId}/>
+                {values.onlyPrivate ? books.filter(b => b._ownerId === userId).map(book => (
+                    <ReviewCard key={book._id} {...book} userId={userId} />
+                )) : books.map(book => (
+                    <ReviewCard key={book._id} {...book} userId={userId} />
                 ))}
             </div>
         </div>
