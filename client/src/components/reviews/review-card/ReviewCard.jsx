@@ -10,12 +10,12 @@ export default function ReviewCard(values) {
     const navigate = useNavigate();
     
     const deleteButtonClickHandler = async () => {
-        const hasConfirmed = confirm(`Are you sure you want to delete your review review about "${values.title}"?`);
+        const hasConfirmed = confirm(`Are you sure you want to delete your review about "${values.title}"?`);
 
         if (hasConfirmed) {
             await bookService.remove(values._id);
 
-            navigate('/books/reviews');
+            navigate(Paths.Reviews);
         }
     }
     return (

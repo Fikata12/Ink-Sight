@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import useForm from '../../hooks/useForm';
 
 import * as bookService from '../../services/reviewService';
+import Paths from '../../utils/paths';
 
 const EditFormKeys = {
     title: 'title',
@@ -38,7 +39,7 @@ export default function Edit() {
         try {
             await gameService.edit(gameId, review);
 
-            navigate('/games');
+            navigate(Paths.Reviews);
         } catch (err) {
             // Error notification
             console.log(err);

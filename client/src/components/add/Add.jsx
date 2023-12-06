@@ -19,12 +19,6 @@ export default function Add() {
     const {isAuthenticated} = useContext(AuthContext);
     const navigate = useNavigate();
 
-    useEffect(() => {
-        if (!isAuthenticated) {
-            navigate(Paths.Login);
-        }
-    }, []);
-
     const createReviewSubmitHandler = async (values) => {
         try {
             await bookService.create(values);

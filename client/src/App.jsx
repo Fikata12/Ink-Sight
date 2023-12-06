@@ -13,6 +13,9 @@ import Edit from './components/edit/Edit';
 import MyReviews from './components/my-reviews/MyReviews';
 import Details from './components/details/Details';
 
+import AuthGuard from './components/guards/AuthGuard';
+import ReviewGuard from './components/guards/ReviewGuard';
+
 import { AuthProvider } from './contexts/authContext';
 
 import Paths from './utils/paths';
@@ -28,15 +31,19 @@ function App() {
         <Routes>
           <Route path={Paths.Home} />
           <Route path={Paths.Reviews} element={<Reviews />} />
-          <Route path={Paths.Mine} element={<MyReviews />} />
-          <Route path={Paths.Add} element={<Add />} />
-          <Route path={`${Paths.Edit}/:id`} element={<Edit />} />
           <Route path={`${Paths.Details}/:id`} element={<Details />} />
           <Route path={Paths.About} element={<About />} />
           <Route path={Paths.Login} element={<Login />} />
-          <Route path={Paths.Logout} element={<Logout />} />
           <Route path={Paths.Register} element={<Register />} />
           <Route path={Paths.NotFound} element={<NotFound />} />
+          <Route element={<AuthGuard />}>
+            <Route path={Paths.Logout} element={<Logout />} />
+            <Route path={Paths.Mine} element={<MyReviews />} />
+            <Route path={Paths.Add} element={<Add />} />
+            <Route element={<ReviewGuard />}>
+              <Route path={`${Paths.Edit}/:id`} element={<Edit />} />
+            </Route>
+          </Route>
         </Routes>
       </div>
       <Footer />
