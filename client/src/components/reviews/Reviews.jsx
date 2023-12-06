@@ -10,15 +10,23 @@ import "./Reviews.css"
 
 export default function Reviews(values) {
     const [books, setBooks] = useState([]);
+    const [count, setCount] = useState(0);
     const { userId } = useContext(AuthContext);
 
     useEffect(() => {
-        bookService.getAll()
-            .then(result => setBooks(result))
-            .catch(err => {
-                console.log(err);
-            });
-    }, []);
+            bookService.getAll()
+                .then(result => {
+                    setBooks(result);
+                    setCount(result.length);
+                })
+                .catch(err => {
+                    console.log(err);
+                });
+    }, [count]);
+
+    const decreaseCount = () => {
+        setCount(count - 1);
+    }
 
     return (
         <div className="container">
@@ -32,9 +40,9 @@ export default function Reviews(values) {
             </div>
             <div className="reviews">
                 {values.onlyPrivate ? books.filter(b => b._ownerId === userId).map(book => (
-                    <ReviewCard key={book._id} {...book} userId={userId} />
+                    <ReviewCard key={book._id} {...book} userId={userId} decreaseCount={decreaseCount} />
                 )) : books.map(book => (
-                    <ReviewCard key={book._id} {...book} userId={userId} />
+                    <ReviewCard key={book._id} {...book} userId={userId} decreaseCount={decreaseCount} />
                 ))}
             </div>
         </div>

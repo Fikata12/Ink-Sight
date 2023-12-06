@@ -14,6 +14,7 @@ export default function ReviewCard(values) {
 
         if (hasConfirmed) {
             await bookService.remove(values._id);
+            values.decreaseCount();
 
             navigate(Paths.Reviews);
         }
