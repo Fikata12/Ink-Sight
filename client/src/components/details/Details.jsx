@@ -80,6 +80,7 @@ export default function Details() {
                     {comments.map(comment => (
                         <Comment key={comment._id} {...comment} />
                     ))}
+                    {comments.length < 1 && <h4 className=' text-center text-muted p-4'>No content.</h4>}
                 </div>
                 <form onSubmit={onSubmit}>
                     <span className="text-danger"></span>

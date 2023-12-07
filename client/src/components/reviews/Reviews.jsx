@@ -71,7 +71,7 @@ export default function Reviews(values) {
                 )) : books.map(book => (
                     <ReviewCard key={book._id} {...book} userId={userId} decreaseCount={decreaseCount} />
                 ))}
-                {books.length < 1 && <h3 className=' text-center text-muted p-4'>No content.</h3>}
+                {books.length < 1 && <h4 className=' text-center text-muted p-4'>No content.</h4>}
             </div>
         </div>
     )

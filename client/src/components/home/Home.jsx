@@ -31,7 +31,7 @@ export default function Home() {
                 <div className="latest">
                     {latestReviews.map(review => <SmallReviewCard key={review._id} {...review} />)}
 
-                    {!latestReviews.length && <p className="no-reviews">No games yet</p>}
+                    {latestReviews.length < 1 && <h4 className=' text-center text-muted p-4'>No content.</h4>}
                 </div>
             </div>
         </div>
