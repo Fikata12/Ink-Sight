@@ -12,6 +12,7 @@ import Reviews from './components/reviews/Reviews';
 import Edit from './components/edit/Edit';
 import MyReviews from './components/my-reviews/MyReviews';
 import Details from './components/details/Details';
+import Home from './components/home/Home';
 
 import AuthGuard from './components/guards/AuthGuard';
 import ReviewGuard from './components/guards/ReviewGuard';
@@ -29,7 +30,7 @@ function App() {
       <Header />
       <div className='app'>
         <Routes>
-          <Route path={Paths.Home} />
+          <Route path={Paths.Home} element={<Home />}/>
           <Route path={Paths.Reviews} element={<Reviews />} />
           <Route path={`${Paths.Details}/:id`} element={<Details />} />
           <Route path={Paths.About} element={<About />} />

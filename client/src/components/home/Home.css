@@ -1,0 +1,30 @@
+.home-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.hero {
+    display:  flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2em;
+}
+
+.hero .home-image-container {
+    display: flex;
+    justify-content: center;
+}
+
+.home-image-container img {
+    max-width: 30em;
+    width: 100%;
+    height: auto;
+}
+
+.latest {
+    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2em;
+    flex: 1 1 30em;
+}

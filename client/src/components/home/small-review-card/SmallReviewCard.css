@@ -1,0 +1,22 @@
+.small-review-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    flex: 0 1 25em;
+    text-align: center;
+}
+
+.small-card-image-container {
+    display: flex;
+    justify-content: center;
+}
+
+.small-card-image-container img {
+    max-width: 13em;
+    width: 100%;
+    height: auto;
+}
+
+.small-review-card h4 {}
+
+.small-review-card p {}

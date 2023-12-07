@@ -24,14 +24,12 @@ export const getOne = async (reviewId) => {
 
 export const getLatest = async () => {
     const query = new URLSearchParams({
-        // sortBy: `_createdOn desc`,
-        offset: 0,
-        pageSize: 3,
+        load: `owner=_ownerId:users`,
     });
 
     const result = await request.get(`${baseUrl}?${query}`);
 
-    return result;
+    return result.sort(e => e._creationDate).reverse().slice(0, 3);
 }
 
 export const create = async (reviewData) => {
