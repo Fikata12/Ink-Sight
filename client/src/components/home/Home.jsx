@@ -16,10 +16,10 @@ export default function Home() {
                 setLatestReviews(result);
             });
     }, []);
-    
+
     return (
         <div className='home-container container'>
-            <div className='hero my-5'>
+            <div className='hero my-4'>
                 <div className='home-image-container'>
                     <img src="./big-logo.png" alt="Ink Sight" />
                 </div>
