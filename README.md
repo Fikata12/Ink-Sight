@@ -81,11 +81,11 @@ Local storage is used for client-side state persistence, and the `usePersistedSt
 
 ![Екранна снимка 2023-12-08 231017](https://github.com/Fikata12/ReactJS-Project/assets/90516828/85198ed3-3cff-449e-80b8-f34c9f1f21e7)
 
-`reviews/edit/:id`
+`/reviews/edit/:id`
 
 ![Екранна снимка 2023-12-08 231027](https://github.com/Fikata12/ReactJS-Project/assets/90516828/d2b6c523-bc40-44ed-83ac-f2af1c0355aa)
 
-`reviews/details/:id`
+`/reviews/details/:id`
 
 ![Екранна снимка 2023-12-08 231047](https://github.com/Fikata12/ReactJS-Project/assets/90516828/dccea765-6b44-46c9-8463-d32d472f1583)
 ![Екранна снимка 2023-12-08 231114](https://github.com/Fikata12/ReactJS-Project/assets/90516828/23aa31a5-77b3-4914-a0f3-359cc0897e3a)
