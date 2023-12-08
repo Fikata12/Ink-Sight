@@ -19,9 +19,9 @@ export default function Add() {
     const navigate = useNavigate();
 
     const createReviewSubmitHandler = async (values) => {
-        reviewService.create(values).then(() => {
+        reviewService.create(values).then((result) => {
             toast.success(notificationConstants.SuccessfullyCreatedReview);
-            navigate(Paths.Details(values._id));
+            navigate(Paths.Details(result._id));
         }).catch((e) => {
             toast.error(`Error: ${e.code} ${e.message}`);
             navigate(Paths.Reviews);

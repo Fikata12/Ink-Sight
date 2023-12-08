@@ -1,6 +1,7 @@
 const notificationConstants = {
     SuccessfullyCreatedReview: 'Successfully created new review!',
-    UnknownError: "Something went wrong!",
+    SuccessfullyEditedReview: "Successfully edited review!",
+    SuccessfullyDeletedReview: "Successfully deleted review!",
 }
 
 export default notificationConstants;

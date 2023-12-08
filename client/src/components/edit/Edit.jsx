@@ -41,7 +41,7 @@ export default function Edit() {
         const review = Object.fromEntries(new FormData(e.currentTarget));
 
         reviewService.edit(id, review).then(() => {
-            toast.success(notificationConstants.SuccessfullyUpdatedReview);
+            toast.success(notificationConstants.SuccessfullyEditedReview);
             navigate(Paths.Details(id));
         }).catch((e) => {
             toast.error(`Error: ${e.code} ${e.message}`);
