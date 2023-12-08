@@ -16,6 +16,7 @@ html {
 
 body {
     margin-bottom: 3.5em;
+    word-break: break-all;
 }
 
 a {
@@ -63,4 +64,8 @@ a {
 
 .text-darker-orange {
     color: #c09a5d;
+}
+
+.error {
+    color: red;
 }

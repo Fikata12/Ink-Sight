@@ -6,6 +6,7 @@ import * as reviewService from '../../services/reviewService';
 
 import Paths from '../../utils/paths';
 import notificationConstants from '../../utils/notificationConstants';
+import { ReviewValidationConstants } from '../../utils/validationConstants';
 
 const EditFormKeys = {
     title: 'title',
@@ -17,6 +18,8 @@ const EditFormKeys = {
 export default function Edit() {
     const navigate = useNavigate();
     const { id } = useParams();
+    const [errors, setErrors] = useState({});
+    const [submitting, setSubmitting] = useState(false);
     const [review, setReview] = useState({
         [EditFormKeys.title]: '',
         [EditFormKeys.isbn]: '',
@@ -34,12 +37,32 @@ export default function Edit() {
             });
     }, [id]);
 
+    const validateValues = (values) => {
+        let errors = {};
+        if (values[EditFormKeys.title].length < ReviewValidationConstants.TitleMinLength ||
+            values[EditFormKeys.title].length > ReviewValidationConstants.TitleMaxLength) {
+            errors[EditFormKeys.title] = `The title must be between ${ReviewValidationConstants.TitleMinLength} and ${ReviewValidationConstants.TitleMaxLength} characters.`;
+        }
+        if (!ReviewValidationConstants.IsbnRegex.test(values[EditFormKeys.isbn])) {
+            errors[EditFormKeys.isbn] = "The ISBN is not valid.";
+        }
+        if (values[EditFormKeys.review].length < ReviewValidationConstants.ReviewMinLength ||
+            values[EditFormKeys.review].length > ReviewValidationConstants.ReviewMaxLength) {
+            errors[EditFormKeys.review] = `The review must be between ${ReviewValidationConstants.ReviewMinLength} and ${ReviewValidationConstants.ReviewMaxLength} characters.`;
+        }
+        if (!ReviewValidationConstants.UrlRegex.test(values[EditFormKeys.imgURL])) {
+            errors[EditFormKeys.imgURL] = "The URL is not valid.";
+        }
+        return errors;
+    };
 
-    const editReviewSubmitHandler = async (e) => {
+    const onSubmit = (e) => {
         e.preventDefault();
+        setErrors(validateValues(review))
+        setSubmitting(true);
+    };
 
-        const review = Object.fromEntries(new FormData(e.currentTarget));
-
+    const editReviewSubmitHandler = async () => {
         reviewService.edit(id, review).then(() => {
             toast.success(notificationConstants.SuccessfullyEditedReview);
             navigate(Paths.Details(id));
@@ -56,12 +79,19 @@ export default function Edit() {
         }));
     };
 
+    useEffect(() => {
+        if (Object.keys(errors).length === 0 && submitting) {
+            editReviewSubmitHandler(review);
+        }
+    }, [errors]);
+
+
     return (
         <div className="row container mx-auto">
             <h2 className="text-center">Edit Review</h2>
             <hr />
             <div className="col-sm-12 offset-lg-2 col-lg-8 offset-xl-3 col-xl-6">
-                <form onSubmit={editReviewSubmitHandler} >
+                <form id='add-form' onSubmit={onSubmit} >
                     <div className="mb-3">
                         <label className="form-label" htmlFor="title">Title</label>
                         <input
@@ -70,7 +100,7 @@ export default function Edit() {
                             value={review[EditFormKeys.title]}
                             className="form-control"
                             id="title" />
-                        <span className="text-danger"></span>
+                        <span className="error">{errors[EditFormKeys.title]}</span>
                     </div>
                     <div className="mb-3">
                         <label className="form-label" htmlFor="isbn">ISBN</label>
@@ -80,7 +110,7 @@ export default function Edit() {
                             value={review[EditFormKeys.isbn]}
                             className="form-control"
                             id="isbn" />
-                        <span className="text-danger"></span>
+                        <span className="error">{errors[EditFormKeys.isbn]}</span>
                     </div>
                     <div className="mb-3">
                         <label className="form-label" htmlFor="review">Review</label>
@@ -91,7 +121,7 @@ export default function Edit() {
                             className="form-control"
                             id="review"
                             rows="5"></textarea>
-                        <span className="text-danger"></span>
+                        <span className="error">{errors[EditFormKeys.review]}</span>
                     </div>
                     <div className="mb-3">
                         <label className="form-label" htmlFor="url">Image Url</label>
@@ -102,7 +132,7 @@ export default function Edit() {
                             type="url"
                             className="form-control"
                             id="url" />
-                        <span className="text-danger"></span>
+                        <span className="error">{errors[EditFormKeys.imgURL]}</span>
                     </div>
                     <div className="mb-3">
                         <input className="btn color-orange mb-2 w-100 p-3 fw-bold" type="submit" value="Edit" />

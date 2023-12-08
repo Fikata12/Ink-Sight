@@ -12,16 +12,23 @@ import * as reviewService from '../../services/reviewService';
 import * as commentService from '../../services/commentService';
 
 import Paths from "../../utils/paths";
+import { CommentValidationConstants } from "../../utils/validationConstants";
 import notificationConstants from "../../utils/notificationConstants";
 
 import "./Details.css";
 
+const CommentFormKeys = {
+    comment: 'comment'
+};
+
 export default function Details() {
     const { id } = useParams();
     const navigate = useNavigate();
-
+    const [comments, setComments] = useState([]);
+    const [commentsCount, setCommentsCount] = useState(0);
+    const [errors, setErrors] = useState({});
+    const [submitting, setSubmitting] = useState(false);
     const { username, userId } = useContext(AuthContext);
-
     const [review, setReview] = useState({
         title: '',
         imgURL: '',
@@ -30,9 +37,6 @@ export default function Details() {
             username: ''
         }
     });
-
-    const [comments, setComments] = useState([]);
-    const [commentsCount, setCommentsCount] = useState(0);
 
     useEffect(() => {
         reviewService.getOne(id)
@@ -55,6 +59,19 @@ export default function Details() {
             });
     }, [commentsCount]);
 
+    const validateValues = (values) => {
+        let errors = {};
+        if (values[CommentFormKeys.comment].length < CommentValidationConstants.CommentMinLength ||
+            values[CommentFormKeys.comment].length > CommentValidationConstants.CommentMaxLength) {
+            errors[CommentFormKeys.comment] = `The comment must be between ${CommentValidationConstants.CommentMinLength} and ${CommentValidationConstants.CommentMaxLength} characters.`;
+        }
+        return errors;
+    };
+
+    const validateAndSubmit = (values) => {
+        setErrors(validateValues(values))
+        setSubmitting(true);
+    };
 
     const addCommentHandler = (values) => {
         const newComment = commentService.create(id, values.comment).then(() => {
@@ -66,9 +83,15 @@ export default function Details() {
         values.comment = '';
     }
 
-    const { values, onChange, onSubmit } = useForm(addCommentHandler, {
-        comment: '',
+    const { values, onChange, onSubmit } = useForm(validateAndSubmit, {
+        [CommentFormKeys.comment]: '',
     });
+
+    useEffect(() => {
+        if (Object.keys(errors).length === 0 && submitting) {
+            addCommentHandler(values);
+        }
+    }, [errors]);
 
     const deleteButtonClickHandler = async () => {
         const hasConfirmed = confirm(`Are you sure you want to delete your review about "${review.title}"?`);
@@ -112,8 +135,8 @@ export default function Details() {
                     {comments.length < 1 && <h4 className=' text-center text-muted p-4'>No content.</h4>}
                 </div>
                 <form onSubmit={onSubmit}>
-                    <span className="text-danger"></span>
-                    <textarea onChange={onChange} name="comment" value={values.comment} className="form-control bg-white rounded-top mb-4" rows="4" placeholder="Comment..."></textarea>
+                    <span className="error">{errors.comment}</span>
+                    <textarea onChange={onChange} name="comment" value={values[CommentFormKeys.comment]} className="form-control bg-white rounded-top mb-4" rows="4" placeholder="Comment..."></textarea>
                     <button type="submit" className="btn color-darker-orange mb-2 w-100 p-3 fw-bold text-white">Add Comment</button>
                 </form>
             </div>
