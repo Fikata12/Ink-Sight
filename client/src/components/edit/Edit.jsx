@@ -129,7 +129,6 @@ export default function Edit() {
                             onChange={onChange}
                             name={EditFormKeys.imgURL}
                             value={review[EditFormKeys.imgURL]}
-                            type="url"
                             className="form-control"
                             id="url" />
                         <span className="error">{errors[EditFormKeys.imgURL]}</span>
