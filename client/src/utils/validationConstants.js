@@ -17,5 +17,5 @@ export const ReviewValidationConstants = {
     IsbnRegex: /^\d{10}$|^\d{13}$/,
     ReviewMinLength: 100,
     ReviewMaxLength: 600,
-    UrlRegex: /[(http(s)?):\/\/(www\.)?a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/ig
+    UrlRegex: /^(https?|ftp):\/\/[^\s\/$.?#].[^\s]*$/
 }
