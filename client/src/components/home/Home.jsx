@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
 
 import SmallReviewCard from './small-review-card/SmallReviewCard';
 
@@ -14,6 +15,8 @@ export default function Home() {
         reviewService.getLatest()
             .then(result => {
                 setLatestReviews(result);
+            }).catch((e) => {
+                toast.error(`Error: ${e.code} ${e.message}`);
             });
     }, []);
 

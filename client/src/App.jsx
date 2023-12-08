@@ -1,4 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import NotFound from './components/not-found/NotFound';
 import About from './components/about/About';
@@ -29,10 +31,11 @@ function App() {
     <AuthProvider>
       <Header />
       <div className='app'>
+        <ToastContainer />
         <Routes>
-          <Route path={Paths.Home} element={<Home />}/>
+          <Route path={Paths.Home} element={<Home />} />
           <Route path={Paths.Reviews} element={<Reviews />} />
-          <Route path={`${Paths.Details}/:id`} element={<Details />} />
+          <Route path={Paths.Details(':id')} element={<Details />} />
           <Route path={Paths.About} element={<About />} />
           <Route path={Paths.Login} element={<Login />} />
           <Route path={Paths.Register} element={<Register />} />
@@ -42,7 +45,7 @@ function App() {
             <Route path={Paths.Mine} element={<MyReviews />} />
             <Route path={Paths.Add} element={<Add />} />
             <Route element={<ReviewGuard />}>
-              <Route path={`${Paths.Edit}/:id`} element={<Edit />} />
+              <Route path={Paths.Edit(':id')} element={<Edit />} />
             </Route>
           </Route>
         </Routes>

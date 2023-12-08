@@ -1,19 +1,26 @@
 import { useContext, useEffect, useState } from "react";
-import { useParams } from "react-router-dom"
+import { Link, useNavigate, useParams } from "react-router-dom";
+import { toast } from 'react-toastify';
+
+import Comment from "./comment/Comment";
+
+import AuthContext from "../../contexts/authContext";
+
+import useForm from "../../hooks/useForm";
 
 import * as reviewService from '../../services/reviewService';
 import * as commentService from '../../services/commentService';
 
-import AuthContext from "../../contexts/authContext";
-import Comment from "./comment/Comment";
-import useForm from "../../hooks/useForm";
+import Paths from "../../utils/paths";
+import notificationConstants from "../../utils/notificationConstants";
 
 import "./Details.css";
 
 export default function Details() {
     const { id } = useParams();
+    const navigate = useNavigate();
 
-    const { username } = useContext(AuthContext);
+    const { username, userId } = useContext(AuthContext);
 
     const [review, setReview] = useState({
         title: '',
@@ -32,7 +39,8 @@ export default function Details() {
             .then((result) => {
                 setReview(result);
             }).catch((e) => {
-                console.log(e);
+                toast.error(`Error: ${e.code} ${e.message}`);
+                navigate(Paths.Reviews);
             });
     }, [id]);
 
@@ -41,25 +49,40 @@ export default function Details() {
             .then((result) => {
                 setComments(result)
                 setCommentsCount(result.length)
+            }).catch((e) => {
+                toast.error(`Error: ${e.code} ${e.message}`);
+                navigate(Paths.Reviews);
             });
     }, [commentsCount]);
 
 
-    const addCommentHandler = async (values) => {
-        const newComment = await commentService.create(
-            id,
-            values.comment
-        );
+    const addCommentHandler = (values) => {
+        const newComment = commentService.create(id, values.comment).then(() => {
+            newComment.owner = { username };
+            setCommentsCount(comments.length + 1);
+        }).catch((e) => {
+            toast.error(`Error: ${e.code} ${e.message}`);
+        });
         values.comment = '';
-
-        newComment.owner = { username };
-
-        setCommentsCount(comments.length + 1);
     }
 
     const { values, onChange, onSubmit } = useForm(addCommentHandler, {
         comment: '',
     });
+
+    const deleteButtonClickHandler = async () => {
+        const hasConfirmed = confirm(`Are you sure you want to delete your review about "${review.title}"?`);
+
+        if (hasConfirmed) {
+            reviewService.remove(review._id).then(() => {
+                toast.success(notificationConstants.SuccessfullyDeletedReview);
+                navigate(Paths.Mine);
+            }).catch((e) => {
+                toast.error(`Error: ${e.code} ${e.message}`);
+                navigate(Paths.Reviews);
+            });
+        }
+    }
 
     return (
         <div className="container details-container color-light-orange">
@@ -71,6 +94,12 @@ export default function Details() {
                     <h1>{review.title}</h1>
                     <h3>ISBN: {review.isbn}</h3>
                     <p className="color-darker-orange text-white"><span>{review.owner.username}: </span> {review.review}</p>
+                    {review._ownerId === userId &&
+                        <div className="details-buttons">
+                            <Link to={Paths.Edit(review._id)} className="btn color-orange mb-2 p-2 fw-bold">Edit</Link>
+                            <button className="btn color-orange mb-2 p-2 fw-bold" onClick={deleteButtonClickHandler}>Delete</button>
+                        </div>
+                    }
                 </div>
             </div>
             <div className="mt-5 comments-container">

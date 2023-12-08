@@ -1,4 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
 
 import ReviewCard from './review-card/ReviewCard';
 
@@ -10,29 +11,23 @@ import "./Reviews.css"
 
 export default function Reviews(values) {
     const [books, setBooks] = useState([]);
-    const [count, setCount] = useState(0);
-
     const { userId } = useContext(AuthContext);
 
     useEffect(() => {
         reviewService.getAll()
             .then(result => {
                 setBooks(result);
-                setCount(result.length);
+            }).catch((e) => {
+                toast.error(`Error: ${e.code} ${e.message}`);
             })
-            .catch(err => {
-                console.log(err);
-            });
-    }, [count]);
-
-    const decreaseCount = () => {
-        setCount(count - 1);
-    }
+    }, []);
     
     const filterReviews = (searchForm) => {
         reviewService.getAll().then(result => {
             const filtered = result.filter(b => b.title.toLowerCase().includes(searchForm.searchString.toLowerCase()));
             setBooks(filtered);
+        }).catch((e) => {
+            toast.error(`Error: ${e.code} ${e.message}`);
         });
     }
 
@@ -67,11 +62,12 @@ export default function Reviews(values) {
             </form>
             <div className="reviews">
                 {values.onlyPrivate ? books.filter(b => b._ownerId === userId).map(book => (
-                    <ReviewCard key={book._id} {...book} userId={userId} decreaseCount={decreaseCount} />
+                    <ReviewCard key={book._id} {...book} userId={userId} />
                 )) : books.map(book => (
-                    <ReviewCard key={book._id} {...book} userId={userId} decreaseCount={decreaseCount} />
+                    <ReviewCard key={book._id} {...book} userId={userId} />
                 ))}
-                {books.length < 1 && <h4 className=' text-center text-muted p-4'>No content.</h4>}
+                {values.onlyPrivate && books.filter(b => b._ownerId === userId).length < 1 && <h4 className=' text-center text-muted p-4'>No content.</h4>}
+                {books.length < 0 && <h4 className=' text-center text-muted p-4'>No content.</h4>}
             </div>
         </div>
     )

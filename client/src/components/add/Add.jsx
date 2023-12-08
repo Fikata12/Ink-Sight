@@ -1,11 +1,11 @@
 import { useNavigate } from 'react-router-dom';
-import { useContext, useEffect } from 'react';
-
-import AuthContext from '../../contexts/authContext';
+import { toast } from 'react-toastify';
 
 import useForm from '../../hooks/useForm';
 
-import * as bookService from '../../services/reviewService';
+import * as reviewService from '../../services/reviewService';
+
+import notificationConstants from '../../utils/notificationConstants';
 import Paths from '../../utils/paths';
 
 const AddFormKeys = {
@@ -13,20 +13,19 @@ const AddFormKeys = {
     isbn: 'isbn',
     review: 'review',
     imgURL: 'imgURL',
-}
+}   
 
 export default function Add() {
-    const {isAuthenticated} = useContext(AuthContext);
     const navigate = useNavigate();
 
     const createReviewSubmitHandler = async (values) => {
-        try {
-            await bookService.create(values);
+        reviewService.create(values).then(() => {
+            toast.success(notificationConstants.SuccessfullyCreatedReview);
+            navigate(Paths.Details(values._id));
+        }).catch((e) => {
+            toast.error(`Error: ${e.code} ${e.message}`);
             navigate(Paths.Reviews);
-        } catch (err) {
-            // Error notification
-            console.log(err);
-        }
+        });
     }
 
     const { values, onChange, onSubmit } = useForm(createReviewSubmitHandler, {

@@ -1,10 +1,11 @@
 import { useNavigate, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
 
-import useForm from '../../hooks/useForm';
+import * as reviewService from '../../services/reviewService';
 
-import * as bookService from '../../services/reviewService';
 import Paths from '../../utils/paths';
+import notificationConstants from '../../utils/notificationConstants';
 
 const EditFormKeys = {
     title: 'title',
@@ -24,9 +25,12 @@ export default function Edit() {
     });
 
     useEffect(() => {
-        bookService.getOne(id)
+        reviewService.getOne(id)
             .then(result => {
                 setReview(result)
+            }).catch((e) => {
+                toast.error(`Error: ${e.code} ${e.message}`);
+                navigate(Paths.Details(id));
             });
     }, [id]);
 
@@ -36,18 +40,17 @@ export default function Edit() {
 
         const review = Object.fromEntries(new FormData(e.currentTarget));
 
-        try {
-            await gameService.edit(gameId, review);
-
+        reviewService.edit(id, review).then(() => {
+            toast.success(notificationConstants.SuccessfullyUpdatedReview);
+            navigate(Paths.Details(id));
+        }).catch((e) => {
+            toast.error(`Error: ${e.code} ${e.message}`);
             navigate(Paths.Reviews);
-        } catch (err) {
-            // Error notification
-            console.log(err);
-        }
+        });
     }
 
     const onChange = (e) => {
-        setGame(state => ({
+        setReview(state => ({
             ...state,
             [e.target.name]: e.target.value
         }));

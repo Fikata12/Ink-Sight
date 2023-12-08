@@ -6,7 +6,7 @@ import "./SmallReviewCard.css";
 
 export default function SmallReviewCard(values) {
     return (
-        <Link className="small-review-card card p-3 color-light-orange" to={`${Paths.Details}/${values._id}`}>
+        <Link className="small-review-card card p-3 color-light-orange" to={Paths.Details(values._id)}>
             <div className="small-card-image-container pb-3">
                 <img src={values.imgURL} alt={values.title} />
             </div>
